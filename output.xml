@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.0.1 (Python 3.12.6 on linux)" generated="2024-10-16T12:47:08.442771" rpa="false" schemaversion="5">
+<suite id="s1" name="Robot Test" source="/home/paul/Desktop/robot_test/dont-look-its-test-repo-for-testing-another-repo/robot_test.robot">
+<kw name="Create Session" owner="RequestsLibrary" type="SETUP">
+<msg time="2024-10-16T12:47:08.490043" level="INFO">Creating Session using : alias=my_api, url=http://127.0.0.1:5001, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<arg>my_api</arg>
+<arg>http://127.0.0.1:5001</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<status status="PASS" start="2024-10-16T12:47:08.489919" elapsed="0.000267"/>
+</kw>
+<test id="s1-t1" name="Test when x is 17" line="10">
+<kw name="GET">
+<kw name="GET On Session" owner="RequestsLibrary">
+<msg time="2024-10-16T12:47:08.493617" level="INFO">GET Request : url=http://127.0.0.1:5001/is_prime/17 
+ path_url=/is_prime/17 
+ headers={'User-Agent': 'python-requests/2.31.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg time="2024-10-16T12:47:08.493704" level="INFO">GET Response : url=http://127.0.0.1:5001/is_prime/17 
+ status=200, reason=OK 
+ headers={'Server': 'Werkzeug/2.3.6 Python/3.12.6', 'Date': 'Wed, 16 Oct 2024 05:47:08 GMT', 'Content-Type': 'application/json', 'Content-Length': '5', 'Connection': 'close'} 
+ body=true
+ 
+ </msg>
+<msg time="2024-10-16T12:47:08.493789" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<var>${response}</var>
+<arg>my_api</arg>
+<arg>${endpoint}</arg>
+<arg>expected_status=anything</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2024-10-16T12:47:08.490873" elapsed="0.002935"/>
+</kw>
+<return>
+<value>${response}</value>
+<status status="PASS" start="2024-10-16T12:47:08.493868" elapsed="0.000036"/>
+</return>
+<msg time="2024-10-16T12:47:08.494008" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<var>${response}</var>
+<arg>${IS_PRIME_ENDPOINT}/17</arg>
+<status status="PASS" start="2024-10-16T12:47:08.490620" elapsed="0.003403"/>
+</kw>
+<kw name="Status Should Be" owner="RequestsLibrary">
+<arg>200</arg>
+<doc>Fails if response status code is different than the expected.</doc>
+<status status="PASS" start="2024-10-16T12:47:08.494149" elapsed="0.000126"/>
+</kw>
+<kw name="Should Be True" owner="BuiltIn">
+<arg>${response.json()}</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="PASS" start="2024-10-16T12:47:08.494408" elapsed="0.000451"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-10-16T12:47:08.495378" level="INFO">
+Result: True</msg>
+<arg>${\n}Result: ${response.json()}</arg>
+<arg>console=True</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-10-16T12:47:08.494986" elapsed="0.000437"/>
+</kw>
+<doc>Test if 17 is a prime number.</doc>
+<status status="PASS" start="2024-10-16T12:47:08.490290" elapsed="0.005237"/>
+</test>
+<test id="s1-t2" name="Test when x is 36" line="17">
+<kw name="GET">
+<kw name="GET On Session" owner="RequestsLibrary">
+<msg time="2024-10-16T12:47:08.498473" level="INFO">GET Request : url=http://127.0.0.1:5001/is_prime/36 
+ path_url=/is_prime/36 
+ headers={'User-Agent': 'python-requests/2.31.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg time="2024-10-16T12:47:08.498542" level="INFO">GET Response : url=http://127.0.0.1:5001/is_prime/36 
+ status=200, reason=OK 
+ headers={'Server': 'Werkzeug/2.3.6 Python/3.12.6', 'Date': 'Wed, 16 Oct 2024 05:47:08 GMT', 'Content-Type': 'application/json', 'Content-Length': '6', 'Connection': 'close'} 
+ body=false
+ 
+ </msg>
+<msg time="2024-10-16T12:47:08.498664" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<var>${response}</var>
+<arg>my_api</arg>
+<arg>${endpoint}</arg>
+<arg>expected_status=anything</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2024-10-16T12:47:08.496304" elapsed="0.002384"/>
+</kw>
+<return>
+<value>${response}</value>
+<status status="PASS" start="2024-10-16T12:47:08.498754" elapsed="0.000046"/>
+</return>
+<msg time="2024-10-16T12:47:08.498941" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<var>${response}</var>
+<arg>${IS_PRIME_ENDPOINT}/36</arg>
+<status status="PASS" start="2024-10-16T12:47:08.496075" elapsed="0.002882"/>
+</kw>
+<kw name="Status Should Be" owner="RequestsLibrary">
+<arg>200</arg>
+<doc>Fails if response status code is different than the expected.</doc>
+<status status="PASS" start="2024-10-16T12:47:08.499106" elapsed="0.000141"/>
+</kw>
+<kw name="Should Not Be True" owner="BuiltIn">
+<arg>${response.json()}</arg>
+<doc>Fails if the given condition is true.</doc>
+<status status="PASS" start="2024-10-16T12:47:08.499374" elapsed="0.000716"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-10-16T12:47:08.501436" level="INFO">
+Result: False</msg>
+<arg>${\n}Result: ${response.json()}</arg>
+<arg>console=True</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-10-16T12:47:08.500375" elapsed="0.001165"/>
+</kw>
+<doc>Test if 36 is a prime number.</doc>
+<status status="PASS" start="2024-10-16T12:47:08.495751" elapsed="0.005961"/>
+</test>
+<test id="s1-t3" name="Test when x is 13219" line="24">
+<kw name="GET">
+<kw name="GET On Session" owner="RequestsLibrary">
+<msg time="2024-10-16T12:47:08.504743" level="INFO">GET Request : url=http://127.0.0.1:5001/is_prime/13219 
+ path_url=/is_prime/13219 
+ headers={'User-Agent': 'python-requests/2.31.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg time="2024-10-16T12:47:08.504799" level="INFO">GET Response : url=http://127.0.0.1:5001/is_prime/13219 
+ status=200, reason=OK 
+ headers={'Server': 'Werkzeug/2.3.6 Python/3.12.6', 'Date': 'Wed, 16 Oct 2024 05:47:08 GMT', 'Content-Type': 'application/json', 'Content-Length': '5', 'Connection': 'close'} 
+ body=true
+ 
+ </msg>
+<msg time="2024-10-16T12:47:08.504880" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<var>${response}</var>
+<arg>my_api</arg>
+<arg>${endpoint}</arg>
+<arg>expected_status=anything</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2024-10-16T12:47:08.502771" elapsed="0.002123"/>
+</kw>
+<return>
+<value>${response}</value>
+<status status="PASS" start="2024-10-16T12:47:08.504951" elapsed="0.000032"/>
+</return>
+<msg time="2024-10-16T12:47:08.505074" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<var>${response}</var>
+<arg>${IS_PRIME_ENDPOINT}/13219</arg>
+<status status="PASS" start="2024-10-16T12:47:08.502379" elapsed="0.002708"/>
+</kw>
+<kw name="Status Should Be" owner="RequestsLibrary">
+<arg>200</arg>
+<doc>Fails if response status code is different than the expected.</doc>
+<status status="PASS" start="2024-10-16T12:47:08.505227" elapsed="0.000094"/>
+</kw>
+<kw name="Should Be True" owner="BuiltIn">
+<arg>${response.json()}</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="PASS" start="2024-10-16T12:47:08.505435" elapsed="0.000385"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-10-16T12:47:08.506385" level="INFO">
+Result: True</msg>
+<arg>${\n}Result: ${response.json()}</arg>
+<arg>console=True</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-10-16T12:47:08.505961" elapsed="0.000478"/>
+</kw>
+<doc>Test if 13219 is a prime number.</doc>
+<status status="PASS" start="2024-10-16T12:47:08.501923" elapsed="0.004630"/>
+</test>
+<kw name="Delete All Sessions" owner="RequestsLibrary" type="TEARDOWN">
+<msg time="2024-10-16T12:47:08.507131" level="INFO">Deleting All Sessions</msg>
+<doc>Removes all the session objects</doc>
+<status status="PASS" start="2024-10-16T12:47:08.507034" elapsed="0.000206"/>
+</kw>
+<status status="PASS" start="2024-10-16T12:47:08.443468" elapsed="0.063811"/>
+</suite>
+<statistics>
+<total>
+<stat pass="3" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="3" fail="0" skip="0" id="s1" name="Robot Test">Robot Test</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
